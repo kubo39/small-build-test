@@ -77,6 +77,8 @@ Note on image sizes: Actual compressed and uncompressed sizes vary by architectu
 
 ## Image sizes
 
+**original author**
+
 ```
 REPOSITORY                          IMAGE ID       SIZE
 hello-zig                           e0cb29ded308   28.9kB
@@ -85,6 +87,22 @@ hello-nim                           2466ac0b4998   38.7kB
 hello-rust                          8d6a31448bdb   610kB
 hello-go                            1e5c3a771a79   2.19MB
 hello-d                             6fbaa97e11a2   6.17MB
+```
+
+```
+$ docker images --format "table {{.Repository}}\t{{.ID}}\t{{.Size}}" | sort -h -k3
+```
+
+**kubo39**
+
+```
+REPOSITORY                     IMAGE ID       SIZE
+hello-zig                      2ef5dbb3a606   10.4kB
+hello-c                        6c1f6a7a9e47   18.3kB
+hello-nim                      e6b964768a3d   22.2kB
+hello-rust                     1d44ca03ff8e   398kB
+hello-go                       8aa8c14d3e11   1.5MB
+hello-d                        b563982aa847   4.75MB
 ```
 
 ```
@@ -115,7 +133,7 @@ Optimization flags: Strip debug symbols and optimize for size where possible.
 ### Nim
 
 - Uses Nim's C backend with musl on Alpine for fully static linking.
-- Compilation flags: `--opt:size --gc:arc -d:release -d:lto -d:strip -d:danger` (optimize for size, lightweight ARC garbage collector, LTO, strip symbols, disable runtime checks).
+- Compilation flags: `--opt:size --mm:arc --d:release --d:lto --d:strip -d:danger --panics:on --exceptions:quirky --passC:-fno-asynchronous-unwind-tables --passC:-ffunction-sections --passC:-fdata-sections --passL:-Wl,--build-id=none --passL:-Wl,--gc-sections --passL:-no-pie` (optimize for size, lightweight ARC garbage collector, LTO, strip symbols, disable runtime checks, disable exceptions and shrink ,eh_frame,linker gc, pie for eliminating .dynstr/.dynsym/.dynamic).
 - Produces extremely small static binaries, often comparable to C or Zig.
 
 ### Rust
