@@ -98,8 +98,8 @@ $ docker images --format "table {{.Repository}}\t{{.ID}}\t{{.Size}}" | sort -h -
 ```
 REPOSITORY   IMAGE ID       SIZE
 hello-c      457e1542bf0f   27.2kB
+hello-nim    cfd8e17e3ace   27.3kB
 hello-zig    b062781236b7   28.3kB
-hello-nim    86c3c206f24c   31.4kB
 hello-rust   b25153b9e6d2   610kB
 hello-go     0d882f8cdf42   2.19MB
 hello-d      c8730f2e3526   5.93MB
