@@ -96,13 +96,13 @@ $ docker images --format "table {{.Repository}}\t{{.ID}}\t{{.Size}}" | sort -h -
 **kubo39**
 
 ```
-REPOSITORY                     IMAGE ID       SIZE
-hello-zig                      2ca4ccc6c10a   9.17kB
-hello-c                        6c1f6a7a9e47   18.3kB
-hello-nim                      e6b964768a3d   22.2kB
-hello-rust                     1d44ca03ff8e   398kB
-hello-go                       8aa8c14d3e11   1.5MB
-hello-d                        a75136e74c32   4.53MB
+REPOSITORY   IMAGE ID       SIZE
+hello-zig    af1a35340886   28.3kB
+hello-c      c5f7a32543eb   32.3kB
+hello-nim    045039df2665   38.6kB
+hello-rust   b25153b9e6d2   610kB
+hello-go     0d882f8cdf42   2.19MB
+hello-d      357ceacf8746   5.93MB
 ```
 
 ```
