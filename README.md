@@ -97,12 +97,12 @@ $ docker images --format "table {{.Repository}}\t{{.ID}}\t{{.Size}}" | sort -h -
 
 ```
 REPOSITORY   IMAGE ID       SIZE
-hello-zig    af1a35340886   28.3kB
+hello-c      457e1542bf0f   27.2kB
+hello-zig    b062781236b7   28.3kB
 hello-nim    86c3c206f24c   31.4kB
-hello-c      c5f7a32543eb   32.3kB
 hello-rust   b25153b9e6d2   610kB
 hello-go     0d882f8cdf42   2.19MB
-hello-d      357ceacf8746   5.93MB
+hello-d      c8730f2e3526   5.93MB
 ```
 
 ```
@@ -118,7 +118,7 @@ Optimization flags: Strip debug symbols and optimize for size where possible.
 ### C
 
 - Uses musl libc on Alpine for fully static linking.
-- Compilation flags: `-static -Os -s` (static link, optimize for size, strip symbols).
+- Compilation flags: `-fno-asynchronous-unwind-tables -ffunction-sections -fdata-sections -Wl,--gc-sections -Wl,--build-id=none -static -Os -no-pie -z norelro -s` (no .eh_frame, linker gc, static link, optimize for size, no-pie, no relro padding, strip symbols).
 
 ### D
 
